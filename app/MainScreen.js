@@ -1,11 +1,13 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 
 const MainScreen = () => {
   return (
-    <View>
-      <Text> Main screen </Text>
-    </View>
+      <SafeAreaView>
+        <View>
+          <Text> Main screen </Text>
+        </View>
+      </SafeAreaView>
   );
 };
 export default MainScreen;

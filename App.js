@@ -7,37 +7,20 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Header,
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
 import MainScreen from './app/MainScreen';
+import {Provider} from 'react-redux';
+import {persistor, store} from './app/storage';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import {View, Text, StyleSheet, default as Colors} from 'react-native';
+
 
 const App: () => React$Node = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          <View>
-            <Text>Offline React Native </Text>
-            <MainScreen />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <Provider store={store}>
+      <PersistGate loading={<View><Text>Loading...</Text></View>} persistor={persistor}>
+        <MainScreen />
+      </PersistGate>
+    </Provider>
   );
 };
 
