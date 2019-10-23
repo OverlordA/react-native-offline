@@ -20,6 +20,7 @@ import {
   Header,
   Colors,
 } from 'react-native/Libraries/NewAppScreen';
+import MainScreen from './app/MainScreen';
 
 const App: () => React$Node = () => {
   return (
@@ -32,6 +33,7 @@ const App: () => React$Node = () => {
           <Header />
           <View>
             <Text>Offline React Native </Text>
+            <MainScreen />
           </View>
         </ScrollView>
       </SafeAreaView>
