@@ -7,18 +7,29 @@
  */
 
 import React from 'react';
-import MainScreen from './app/MainScreen';
 import {Provider} from 'react-redux';
 import {persistor, store} from './app/storage';
-import { PersistGate } from 'redux-persist/lib/integration/react';
+import {PersistGate} from 'redux-persist/lib/integration/react';
 import {View, Text, StyleSheet, default as Colors} from 'react-native';
-
+import AppContainer from './app/navigation/mainNav';
 
 const App: () => React$Node = () => {
+  const handleNavigationChange = nav => {
+    console.log('handle navigation change ', nav);
+  };
   return (
     <Provider store={store}>
-      <PersistGate loading={<View><Text>Loading...</Text></View>} persistor={persistor}>
-        <MainScreen />
+      <PersistGate
+        loading={
+          <View>
+            <Text>Loading...</Text>
+          </View>
+        }
+        persistor={persistor}>
+        <AppContainer
+          onNavigationStateChange={handleNavigationChange}
+          uriPrefix="/app"
+        />
       </PersistGate>
     </Provider>
   );

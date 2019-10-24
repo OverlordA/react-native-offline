@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {initApp, saveProducts} from './storage/reducers/iniActions';
 import {getProducts} from './services/shopify';
 
-const MainScreen = ({}) => {
+const MainScreen = ({navigation}) => {
   const dispatch = useDispatch();
   const {initStatus, shopifyProducts} = useSelector(state => state.init);
 
@@ -22,13 +22,23 @@ const MainScreen = ({}) => {
         <Text>{initStatus}</Text>
       </View>
       <View>
-        {shopifyProducts && shopifyProducts.length ? (shopifyProducts.map(product => {
+        {shopifyProducts && shopifyProducts.length ? (
+          shopifyProducts.map(product => {
             return (
-              <View style={{ borderWidth: 1, borderColor: 'red' }}>
+              <TouchableOpacity
+                style={{borderWidth: 1, borderColor: 'red'}}
+                onPress={() => {
+                  navigation.navigate({
+                    routeName: 'productDetail',
+                    params: {
+                      productId: product.node.id,
+                    },
+                  });
+                }}>
                 <Text> ID: {product.node.id}</Text>
                 <Text> Title: {product.node.title}</Text>
                 <Text> Description: {product.node.description}</Text>
-              </View>
+              </TouchableOpacity>
             );
           })
         ) : (
