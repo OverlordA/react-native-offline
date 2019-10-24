@@ -1,6 +1,6 @@
 import {initConst} from './initConst';
 
-export const initApp = async payload => async dispatch => {
+export const initApp = payload => dispatch => {
   dispatch({
     type: initConst.init,
     payload: payload,

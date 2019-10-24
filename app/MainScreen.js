@@ -1,23 +1,32 @@
 import React, {useEffect} from 'react';
 import {View, Text, SafeAreaView} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {connect} from 'react-redux';
 import {initApp} from './storage/reducers/iniActions';
 
-const MainScreen = () => {
+const MainScreen = ({initStatus = 'tee', initApp}) => {
   useEffect(() => {
-    dispatch(initApp("Initialized"));
-  }, [dispatch]);
-
-  const dispatch = useDispatch();
-  const { initStatus } = useSelector(state => state.init);
+    initApp('Application initialize');
+  }, [initApp]);
 
   return (
     <SafeAreaView>
       <View>
         <Text> Main screen </Text>
-          <Text>{initStatus}</Text>
+        <Text>{initStatus}</Text>
       </View>
     </SafeAreaView>
   );
 };
-export default MainScreen;
+
+const mapStateToProps = state => {
+  const {initStatus} = state.init;
+  return {initStatus};
+};
+const mapDispatchToProps = {
+  initApp,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MainScreen);
