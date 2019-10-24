@@ -2,6 +2,7 @@ import {initConst} from './initConst';
 
 const initialState = {
   initStatus: 'initialized false ',
+  shopifyProducts: [],
 };
 
 export const init = (state = initialState, action) => {
@@ -10,6 +11,12 @@ export const init = (state = initialState, action) => {
       return {
         ...state,
         initStatus: action.payload,
+      };
+    }
+    case initConst.saveProducts: {
+      return {
+        ...state,
+        shopifyProducts: action.payload,
       };
     }
     default:

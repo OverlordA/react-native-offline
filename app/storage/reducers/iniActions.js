@@ -6,3 +6,10 @@ export const initApp = payload => dispatch => {
     payload: payload,
   });
 };
+
+export const saveProducts = payload => dispatch => {
+  dispatch({
+    type: initConst.saveProducts,
+    payload,
+  });
+};

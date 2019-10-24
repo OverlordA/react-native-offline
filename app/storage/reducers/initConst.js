@@ -6,6 +6,7 @@ const actionTypeManager = (actions, {prefix}) =>
 
 const types = {
   init: 'INITIALIZE',
+  saveProducts: 'SAVE_PRODUCTS',
 };
 
 const prefix = {prefix: 'INIT: '};
