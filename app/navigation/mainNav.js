@@ -1,14 +1,14 @@
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import MainScreen from '../MainScreen';
-import ProductDetail from '../view/ProductDetail';
+import ProductDetailScroll from '../view/ProductDetailScroll';
 
 const RootStack = createStackNavigator({
   productsList: {
     screen: MainScreen,
   },
   productDetail: {
-    screen: ProductDetail,
+    screen: ProductDetailScroll,
   },
 });
 const AppContainer = createAppContainer(RootStack);
