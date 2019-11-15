@@ -1,19 +1,14 @@
-import React, {useRef, Fragment} from 'react';
+import React, { Fragment} from 'react';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import {
-  SafeAreaView,
   Text,
   View,
-  ScrollView,
   TouchableOpacity,
   Animated,
 } from 'react-native';
 
 const ProductDetailScroll = () => {
   const scrollRef = React.createRef();
-
- // const AnimatedScrollView = Animated.createAnimatedComponent(ScrollView);
-    const props =   { test: 'test key' };
 
   return (
     <Fragment>
@@ -22,7 +17,6 @@ const ProductDetailScroll = () => {
         backgroundColor="blue"
         contentBackgroundColor="pink"
         parallaxHeaderHeight={300}
-        // renderScrollComponent={() => <Animated.View />}
         renderScrollComponent={() => <Animated.ScrollView />}
         renderForeground={() => (
           <View
@@ -66,11 +60,6 @@ const ProductDetailScroll = () => {
       </ParallaxScrollView>
       <TouchableOpacity
         onPress={() => {
-          // scrollRef.current.scrollTo({x: 0, y: 0, animated: true});
-          //    this.myRef.getNode().scrollTo({
-          //        y: 0,
-          //        animated: true,
-          //    });
           console.log('scroll ref ', scrollRef.current.scrollTo({x: 0, y: 0, animated: true}));
         }}>
         <Text> scroll top </Text>
