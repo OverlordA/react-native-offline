@@ -6,12 +6,10 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
-    Animated
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {initApp, saveProducts} from './storage/reducers/iniActions';
 import {getProducts} from './services/shopify';
-import ParallaxScrollView from 'react-native-parallax-scroll-view';
 
 const MainScreen = ({navigation}) => {
   const dispatch = useDispatch();
